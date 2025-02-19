@@ -1,0 +1,124 @@
+/* Fullscreen Centered Container */
+.animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: "Comic Sans MS", sans-serif; /* Fun cartoon style */
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .animation-container {
+    font-size: calc(10vw - 3em);
+  }
+}
+
+@media (max-width: 900px) {
+  .animation-container {
+    font-size: calc(11vw - 3.1em);
+  }
+}
+
+@media (max-width: 800px) {
+  .animation-container {
+    font-size: 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .animation-container {
+    font-size: 150%;
+  }
+}
+
+
+/* "P" Letter Styling */
+.letter.p {
+  display: inline-block;
+  color: #ffcc00; /* Bright yellow for "P" */
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* "Article" word styling */
+.word {
+  display: inline-block;
+  margin-left: 10px;
+  color: #ffffff; /* White text */
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Crown starts on P */
+.crown {
+  position: absolute;
+  top: 49%; /* Correctly aligned with "P" */
+  left: 29%; /* Centered on "P" */
+  transform: translate(-50%, -100%) rotate(-15deg); /* Slight tilt */
+  font-size: 3rem;
+  transition: transform 0.8s ease-in-out, top 1s ease-in-out, left 1s ease-in-out;
+}
+
+/* Move "Article" towards "P" */
+.bounce-push {
+  animation: bouncePush 1.5s ease-in-out forwards;
+}
+
+/* "P" gets pushed, wobbles, falls straight down, then disappears */
+.pushed-and-died {
+  animation: pushWobbleFall 2s ease-in-out forwards, fadeOut 1s ease-in-out 2.5s forwards;
+}
+
+/* Crown Moves with "P" Initially */
+.crown-move-with-p {
+  animation: crownFallWithP 2s ease-in-out forwards;
+}
+
+/* Bouncy push effect */
+@keyframes bouncePush {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-30px) scale(1.1); } /* Bounce forward */
+  50% { transform: translateX(-40px) scale(1); } /* Max push */
+  80% { transform: translateX(-10px) scale(1.05); } /* Bounce back */
+  100% { transform: translateX(0) scale(1); } /* Return */
+}
+
+/* Wobble, Fall Down, and Disappear */
+@keyframes pushWobbleFall {
+  0% { transform: translateX(0px) rotate(0deg); }
+  10% { transform: translateX(-15px) rotate(-10deg); }
+  20% { transform: translateX(-30px) rotate(10deg); }
+  30% { transform: translateX(-50px) rotate(-15deg); }
+  40% { transform: translateX(-80px) rotate(15deg); }
+  50% { transform: translateX(-100px) rotate(-20deg) scale(1.2); }
+  60% { transform: translateX(-120px) rotate(25deg) scale(1); }
+  70% { transform: translateX(-130px) rotate(-30deg) scale(0.9); }
+  80% { transform: translateX(-140px) translateY(10px) rotate(-10deg); }
+  90% { transform: translateX(-140px) translateY(50px) rotate(5deg); }
+  100% { transform: translateX(-140px) translateY(120px) rotate(10deg); }
+}
+
+/* Disappear Effect After Falling */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Crown Falls with "P" Initially */
+@keyframes crownFallWithP {
+  0% { top: 49%; left: 29%; transform: translate(-50%, -100%) rotate(-15deg); }
+  20% { top: 49%; left: 25%; transform: translate(-50%, -100%) rotate(-10deg); }
+  50% { top: 52%; left: 21%; transform: translate(-50%, -100%) rotate(-5deg); }
+  100% { top: 49%; left: 33%; transform: translate(-50%, -100%) rotate(-5deg); }
+}
+
+/* Crown Bounces from "P" to "A" After "P" Falls */
+@keyframes crownBounceToA {
+  20% { top: 40%; left: 55%; transform: rotate(0deg) scale(1.1); } /* Mid-air bounce */
+  50% { top: 40%; left: 60%; transform: rotate(10deg) scale(1.2); } /* Highest bounce */
+  70% { top: 40%; left: 65%; transform: rotate(5deg) scale(1.1); } /* Coming down */
+  100% { top: 40%; left: 10%; transform: translate(-50%, -100%) rotate(-10deg); } /* Lands on "A" */
+}

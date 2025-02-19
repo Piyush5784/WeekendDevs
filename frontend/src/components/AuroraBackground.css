@@ -1,0 +1,105 @@
+/* Aurora Container - Fullscreen with Depth Effect */
+.aurora-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at top, rgba(5, 8, 20, 1) 10%, rgba(2, 5, 15, 1) 50%, rgba(0, 0, 5, 1) 90%);
+    overflow: hidden;
+    z-index: -1;
+    perspective: 800px; /* Adds depth to elements inside */
+}
+
+/* 3D Aurora Waves */
+.aurora {
+    position: absolute;
+    width: 150%;
+    height: 250%;
+    top: -75%;
+    filter: blur(40px);
+    opacity: 0.6;
+    transform-origin: center;
+    animation: auroraFlow 15s infinite linear;
+    animation-fill-mode: both; /* Ensures animation starts immediately */
+
+    background: repeating-linear-gradient(
+      80deg,
+      rgba(25, 50, 80, 0.5) 0%,  /* Deep dark blue */
+      rgba(0, 0, 0, 0) 25%,  
+      rgba(40, 60, 100, 0.5) 50%,  /* Muted indigo */
+      rgba(0, 0, 0, 0) 75%,  
+      rgba(10, 30, 50, 0.5) 100%  /* Dark teal */
+    );
+    mix-blend-mode: screen;
+    transform: translateZ(50px) rotateX(15deg) scale(1.2);
+}
+
+/* Darker Color Variations */
+.aurora1 {
+    background: repeating-linear-gradient(
+      75deg,
+      rgba(20, 40, 70, 0.6) 0%,  /* Deep dark navy */
+      rgba(0, 0, 0, 0) 30%,  
+      rgba(35, 50, 90, 0.6) 60%,  /* Subtle deep indigo */
+      rgba(0, 0, 0, 0) 90%
+    );
+    animation: auroraFlow 15s infinite linear;
+    transform: translateZ(80px) rotateX(20deg) scale(1.3);
+}
+
+.aurora2 {
+    background: repeating-linear-gradient(
+      85deg,
+      rgba(50, 80, 120, 0.6) 0%,  /* Muted dark blue */
+      rgba(0, 0, 0, 0) 40%,  
+      rgba(10, 60, 90, 0.6) 80%   /* Deep cyan */
+    );
+    animation: auroraFlow 15s infinite linear;
+    transform: translateZ(60px) rotateX(10deg) scale(1.1);
+}
+
+.aurora3 {
+    background: repeating-linear-gradient(
+      85deg,
+      rgba(40, 70, 120, 0.5) 0%,  /* Muted navy */
+      rgba(0, 0, 0, 0) 50%,  
+      rgba(20, 50, 80, 0.5) 100%   /* Dark teal */
+    );
+    animation: auroraFlow 15s infinite linear;
+    transform: translateZ(100px) rotateX(25deg) scale(1.5);
+}
+
+.aurora4 {
+    background: repeating-linear-gradient(
+      100deg,
+      rgba(60, 100, 150, 0.5) 0%,  /* Muted dark blue */
+      rgba(0, 0, 0, 0) 60%,  
+      rgba(30, 80, 120, 0.5) 100%  /* Deep indigo */
+    );
+    animation: auroraFlow 15s infinite linear;
+    transform: translateZ(40px) rotateX(5deg) scale(1);
+}
+
+/* Reflected Aurora Waves */
+.reflection {
+    transform: scaleY(-1);
+    bottom: -50%;
+    top: auto;
+    opacity: 0.5;
+    filter: blur(80px);
+    animation: reflectionFlow 14s infinite linear;
+    animation-fill-mode: both; /* Ensures immediate start */
+}
+
+/* 3D Aurora Wave Motion */
+@keyframes auroraFlow {
+    0% { transform: translateX(100%) translateY(-10%) rotateX(15deg) translateZ(50px); }
+    50% { transform: translateX(50%) translateY(10%) rotateX(-10deg) translateZ(100px); }
+    100% { transform: translateX(-100%) translateY(-10%) rotateX(15deg) translateZ(50px); }
+}
+
+/* Reflection Flow - Slightly Different Wavy Motion */
+@keyframes reflectionFlow {
+    0% { transform: scaleY(-1) translateX(100%) translateY(10%) rotateX(-5deg) translateZ(20px); }
+    50% { transform: scaleY(-1) translateX(50%) translateY(-10%) rotateX(5deg) translateZ(40px); }
+    100% { transform: scaleY(-1) translateX(-100%) translateY(10%) rotateX(-5deg) translateZ(20px); }
+}

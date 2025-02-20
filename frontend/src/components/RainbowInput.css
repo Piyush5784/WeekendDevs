@@ -1,52 +1,89 @@
 /* Input Container */
 .input-container {
-    position: relative;
-    display: inline-block;
-    border-radius: 50px; /* Rounded Borders */
-    transition: transform 0.3s ease-in-out;
+  position: relative;
+  display: inline-block;
+  /* border: 1px solid white; */
+  border-radius: 50px; /* Rounded Borders */
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Slightly scale up when focused or hovered */
 .input-container.active,
 .input-container:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Input Field (Now Usable) */
 .rainbow-input {
-    width: 220px;
-    height: 25px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    border-radius: 50px; /* Smooth rounded corners */
-    background: #121212;
-    color: #ffffff;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-    position: relative; /* Ensures input is above the border */
-    z-index: 2; /* Keeps input field interactive */
+  /* width: 100%; */
+  max-width: 220px;
+  height: 25px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 50px; /* Smooth rounded corners */
+  background: #121212;
+  color: #ffffff;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+  position: relative; /* Ensures input is above the border */
+  z-index: 2; /* Keeps input field interactive */
 }
 
 /* Elegant Rainbow Border */
 .rainbow-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 1px;
-    border-radius: 50px; /* Creates a thinner, more elegant border */
-    background: linear-gradient(45deg, 
-        red, orange, yellow, green, cyan, blue, violet, red);
-    background-size: 300% 300%;
-    animation: rainbowMove 6s infinite linear;
-    z-index: 1; /* Keeps border behind the input */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+  border-radius: 50px; /* Creates a thinner, more elegant border */
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet,
+    red
+  );
+  background-size: 300% 300%;
+  animation: rainbowMove 6s infinite linear;
+  z-index: 1; /* Keeps border behind the input */
 }
 
 /* Smooth Rainbow Flow */
 @keyframes rainbowMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .rainbow-input {
+    font-size: 0.875rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .rainbow-input {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 400px) {
+  .rainbow-border {
+    top: -3px;
+  }
 }
